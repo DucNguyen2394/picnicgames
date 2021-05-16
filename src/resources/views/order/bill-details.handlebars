@@ -1,0 +1,79 @@
+<div class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+        <div class="row">
+            <div class="col-md-6">
+                <tr class="top">
+                    <td colspan="6">
+                        <table>
+                            <tr>
+                                <td class="title">
+                                    <img src="/img/Logo.png" style="width: 150px; max-width: 300px ; height:60px">
+                                </td>
+
+                                <td >
+                                    Invoice #: 123311<br />
+                                    Created: 15-04-2021<br />
+                                    Due: 20-04-2021
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </div>
+            <div class="col-md-6">
+                <tr class="information">
+                    <td colspan="6">
+                        <table>
+                            <tr>
+                                <td>
+                                    Picnic Games, Inc.<br />
+                                    8 Tôn Thất Thuyết<br />
+                                    Nam Từ Liêm, Hà Nội
+                                </td>
+
+                                <td>
+                                    {{bill.name}}<br/>
+                                    {{bill.email}}
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </div>
+        </div>
+        <tr class="heading">
+            <td>Name</td>
+            <td>Price</td>
+            <td></td>
+            <td></td>
+            <td>Number people</td>
+            <td>Total</td>
+        </tr>
+
+        <tr class="item">
+            <td>{{bill.name_game}}</td>
+            <td>{{bill.price}}</td>
+            <td></td>
+            <td></td>
+            <td>{{bill.number}} x 5$</td>
+            <td>{{bill.totalPrice}}</td>
+        </tr>
+
+        <tr class="total">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="font-weight-bold">Total: {{bill.totalPrice}}</td>
+        </tr>
+    </table>
+    <br><br><br>
+    If you have any question about this invoice, don't hesitate to contact us and we will help you!
+    <br>
+    Enjoy your time with our games.
+    <br><br>
+    Regards,
+    <br>
+    PicnicGames
+</div>

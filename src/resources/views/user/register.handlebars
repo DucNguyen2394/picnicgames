@@ -1,0 +1,120 @@
+<div class="background-img-register">
+    <div class="wrapper">
+        <div class="container wrapregister">
+            <div class="container">
+                <h1>Register</h1>
+                <form name="myForm" class="form" id="form">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <i class="fas fa-user" style="color: #ffffff;"></i>
+                                <input type="text" id="username" class="form-control input1" placeholder="username">
+                                <span class="error" style="color: #ffdf2f;"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <i class="fas fa-envelope" style="color: #ffffff;"></i>
+                                <input type="email" id="email" class="form-control inputmail" placeholder="Email"
+                                    required>
+                                <span class="error" style="color: #ffdf2f;"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <i class="fas fa-phone" style="color: #ffffff;"></i>
+                                <input type="text" id="phone" class="form-control inputmail" placeholder="Phone number"
+                                    required>
+                                <span class="error" style="color: #ffdf2f;"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <i class="fas fa-address-card" style="color: #ffffff;"></i>
+                                <input type="text" id="address" class="form-control inputmail" placeholder="Address"
+                                    required>
+                                <span class="error" style="color: #ffdf2f;"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <i class="fas fa-lock" style="color: #ffffff;"></i>
+                                <input type="password" id="password" class="form-control input2"
+                                    placeholder="Password">
+                                <span class="error" style="color: #ffdf2f;"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group" style="color: #ffffff;">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="passwordConfirm" class="form-control input2"
+                                    placeholder="Re-Password">
+                                <span class="error" style="color: #ffdf2f;"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" id="submit-register" class="btn btn-primary btn-block mb-3">Register</button>
+                    <span class="error"></span>
+                    <div class="register">
+                        <a href="/user/log-in">Already have an account. Login now</a>
+                    </div>
+                </form>
+                <div class="copyright">
+                    <p>© 2021 Form Picnicgames <a href="/" target="_blank"> FPT Aptech </a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let username = document.querySelector("#username");
+    let email = document.querySelector("#email");
+    let password = document.querySelector("#password");
+    let passwordConfirm = document.querySelector("#passwordConfirm")
+    let phone = document.querySelector("#phone");
+    let address = document.querySelector("#address")
+
+    document.getElementById("form").addEventListener("submit", async function (event) {
+        event.preventDefault();
+        if (username.value === "") {
+            username.nextElementSibling.innerHTML = "please enter your username";
+        }
+        else if (username.value.length < 6) {
+            username.nextElementSibling.innerHTML = "please enter more than 6 character";
+        }
+        else if(password.value.length === ""){
+            password.nextElementSibling.innerHTML = "please enter your password";
+        }
+        else if(password.value.length < 6){
+            password.nextElementSibling.innerHTML = "please enter more than 6 character";
+        }
+        else if(password.value !== passwordConfirm.value ){
+            passwordConfirm.nextElementSibling.innerHTML = "Password and confirm password does not match"
+        }
+        else if(phone.value === "" ){
+            phone.nextElementSibling.innerHTML = "Please enter your phone"
+        }
+        else if(address.value !== address.value ){
+            address.nextElementSibling.innerHTML = "Please enter your address"
+        }
+        else {
+            fetch("http://localhost:3000/user/storedUser",
+            {
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify({
+                    username: username.value, 
+                    password: password.value,
+                    email: email.value,
+                    phone: phone.value,
+                    address: address.value
+                })
+            })
+            window.location.href = "http://localhost:3000";
+            }
+    })
+</script>

@@ -1,0 +1,93 @@
+<div class="background-img">
+    <div class="mt-4">
+        <div class="stored">
+            <div class="top-stored d-flex justify-content-between">
+                <h1>Game deleted</h1>
+                <a href="/me/stored/games" class="trash"><i class="fas fa-arrow-left"></i> List game</a>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name game</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Price</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                {{#each games}}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{sum @index 1}}</th>
+                        <td>{{this.name}}</td>
+                        <td>{{this.type}}</td>
+                        <td>{{this.category}}</td>
+                        <td>{{this.creatdAt}}</td>
+                        <td>{{this.price}}</td>
+                        <td>
+                            <a href="" class="btn btn-link restore" data-id="{{this._id}}">Restore</a>
+                            <a class="btn btn-link" data-toggle="modal" data-id="{{this._id}}"
+                                data-target="#delete-game-modal">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+                {{else}}
+                <tr>
+                    <td colspan="5">Empty trash can </n></td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+</div>
+{{!-- confirm delete --}}
+<div id="delete-game-modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete game</h5>
+            </div>
+            <div class="modal-body">
+                <p>Do you want delete game?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-delete-game" type="button" class="btn btn-danger ">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- restore form --}}
+<form method="POST" name="restore-game-form"></form>
+{{!-- delete form --}}
+<form method="POST" name="delete-game-form"></form>
+
+<script>
+    var restore = $('.restore')
+    var restoreForm = document.forms['restore-game-form']
+    var DeleteGame = document.getElementById("btn-delete-game")
+    // restore button click
+    restore.click(function (event) {
+        event.preventDefault()
+        var gameId = $(this).data('id')
+        console.log(gameId)
+        restoreForm.action = '/game/' + gameId + '/restore?_method=PATCH'
+        restoreForm.submit()
+    })
+    // delete button click
+    var gameId
+    var deleteForm = document.forms['delete-game-form']
+    $('#delete-game-modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        gameId = button.data('id')
+    })
+    var DeleteGame = document.getElementById("btn-delete-game")
+    DeleteGame.onclick = function () {
+        deleteForm.action = '/game/' + gameId + '/destroy?_method=DELETE'
+        deleteForm.submit()
+    }
+
+
+</script>

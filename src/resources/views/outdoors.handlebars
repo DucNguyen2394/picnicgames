@@ -1,0 +1,80 @@
+<!-- Start Banner-->
+<div class="banner animate__animated animate__fadeIn wow">
+  <div class="container">
+    <div class="banner__background"><img src="/img/bannerHome-Page-trapeze.jpg"></div>
+    <div class="banner__content text-center my-auto">
+      <div class="banner__content-title">Outdoors</div>
+      <div class="banner__content-subtitle">Home<i class="fal fa-angle-right"></i><span>Outdoors</span></div>
+    </div>
+  </div>
+</div>
+<!-- End Banner-->
+<!-- Start games-->
+<div class="games">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-8 col-xl-9">
+        <div class="games__content">
+          <div class="row" id="myGame">
+            {{#each games}}
+            <div class="col-12 col-md-6 col-lg-6" id="listGame">
+              <div class="games__item animate__animated animate__zoomIn wow" data-wow-delay="0.5s">
+                <div class="games__item-image"><a href="/outdoors/game/{{this.slug}}"><img src="{{this.image}}"></a>
+                  <div class="image__date"><span class="date">15</span><span class="month">Jun</span></div>
+                </div>
+                <div class="games__item-info">
+                  <div class="info__subtitle">{{this.category}}</div>
+                  <div class="info__title"><a href="/outdoors/game/{{this.slug}}"><span>{{this.name}}</span></a></div>
+                  <div class="info__text">{{this.description}}</div><a class="info__readmore"
+                    href="/outdoors/game/{{this.slug}}"><span>Read More</span></a>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-xl-3">
+        <div class="games__sidebar animate__animated animate__fadeInRight wow" data-wow-delay="1s">
+          <div class="games__sidebar-search">
+            <div class="search__title">Search</div>
+            <form action="">
+              <input type="text" id="search" name="search" value placeholder="Search..." onkeyup="myFunction()">
+            </form>
+          </div>
+          <div class="games__sidebar-cate">
+            <div class="cate__title">Categories</div>
+            <div class="cate__content">
+              <ul class="cate__content-list">
+                <li class="list__item"><a class="list__item-link" href="/outdoors/kids">Kids</a></li>
+                <li class="list__item"><a class="list__item-link" href="/outdoors/males">Males</a></li>
+                <li class="list__item"><a class="list__item-link" href="/outdoors/females">Females</a></li>
+                <li class="list__item"><a class="list__item-link" href="/outdoors/families">Families</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function myFunction() {
+    var input, filter, myGame, listGame, a, i, txtValue;
+    input = document.getElementById("search");
+    filter = input.value.toUpperCase();
+    myGame = document.querySelector("#myGame");
+    listGame = myGame.querySelectorAll("#listGame");
+    for (i = 0; i < listGame.length; i++) {
+      a = listGame[i].querySelector(".info__title a span");
+      console.log(a)
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().includes(filter)) {
+        listGame[i].style.display = "block";
+      } else {
+        listGame[i].style.display = "none";
+      }
+    }
+  }
+</script>

@@ -1,0 +1,52 @@
+<h2>Payment details</h2>
+<div class="payment-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-75">
+                <form action="http://localhost:3000/order/billing-stored" method="POST">
+                    <div class="row">
+                        <div class="col-50">
+                            <h3>Billing Address</h3>
+                            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                            <input type="text" id="fname" name="fullname" placeholder="John M. Doe" required>
+                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            <label for="phone"><i class="fas fa-phone"></i> Phone</label>
+                            <input type="text" id="phone" name="phone" placeholder="098.765.4321" required>
+                            <label for="adr"><i class="fas fa-address-card"></i> Address</label>
+                            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" required>
+                        </div>
+                        <div class="col-50">
+                            <h3>Payment</h3>
+                            <label for="fname">Accepted Cards Or Cash</label>
+                            <div class="icon-container">
+                                <i class="fab fa-cc-visa" style="color:navy;"></i>
+                                <i class="fab fa-cc-amex" style="color:blue;"></i>
+                                <i class="fab fa-cc-mastercard" style="color:red;"></i>
+                                <i class="fab fa-cc-discover" style="color:orange;"></i>
+                                <i class="fab fa-cc-paypal" style="color: #2196F3;"></i>
+                            </div>
+                            <label for="cname">Name on Card</label>
+                            <input type="text" id="cname" name="nameOnCard" placeholder="John More Doe">
+                            <label for="ccnum">Credit card number</label>
+                            <input type="text" id="ccnum" name="creditCardNumberr" placeholder="1111-2222-3333-4444">
+                            <input type="text" name="id" id="" value="{{orders.id}}" class="d-none">
+                        </div>
+                    </div>
+                    <button style="color: #333333;" class="btn">Checkout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-25">
+        <div class="container">
+            <h4>Game's name <span class="price" style="color:black">Price <b></b></span></h4>
+            <hr>
+            <p>{{orders.name}} <span class="price">{{orders.price}}</span></p>
+            <p>Number people <span class="price">{{orders.number}} x 5$</span></p>
+            <hr>
+            <p>Total <span class="price" style="color:black"><b>{{orders.totalPrice}}</b></span></p>
+        </div>
+    </div>
+</div>
+</div>

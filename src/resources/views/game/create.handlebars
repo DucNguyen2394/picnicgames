@@ -1,0 +1,38 @@
+<div class="background-img">
+  <div class="mt-4">
+    <div class="create">
+      <h1>Create game</h1>
+      <form method="POST" action="/game/store">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Name game" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea type="text" class="form-control" id="description" name="description" placeholder="Description" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea class="form-control" id="content" name="content" rows="3" placeholder="Content..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="image">Image</label>
+          <input type="text" class="form-control" id="image" name="image" placeholder="Image" required>
+        </div>
+        <div class="form-group">
+          <label for="type">Type</label>
+          <input type="text" class="form-control" id="type" name="type" placeholder="Type" required>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input type="text" class="form-control" id="category" name="category" placeholder="Category" required>
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="text" class="form-control" id="price" name="price" placeholder="Price" required>
+        </div>
+        <button type="submit" class="btn btn-transparent">Add game</button>
+      </form>
+    </div>
+  </div>
+</div>

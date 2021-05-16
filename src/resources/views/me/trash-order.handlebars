@@ -1,0 +1,129 @@
+<style>
+    .details {
+        position: relative;
+    }
+
+    .trash {
+        font-size: 24px;
+        padding-top: 15px;
+        color: #FFFFFF;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    .trash:hover {
+        color: #ffdf2f;
+        text-decoration: none;
+        transition: all 0.4s ease
+    }
+</style>
+<div class="oders-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 details">
+                <h1>Order deleted</h1>
+                <a href="/me/order-stored" class="trash"><i class="fas fa-arrow-left"></i> List order</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name's game</th>
+                            <th scope="col">Order date</th>
+                            <th scope="col">Durtion</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Price</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each orders}}
+                        <tr>
+                            <th scope="row">{{sum @index 1}}</th>
+                            <td><span>{{this.gameName}}</span>
+                                <input type="text" name="name" readonly value="{{this.name}}">
+                            </td>
+                            <td><span class="order">{{this.order_date}}</span>
+                                <input class="input" type="text" name="order_date" value="{{this.order_date}}">
+                            </td>
+                            <td><span class="order">{{this.duration}}</span>
+                                <input class="input" type="text" name="duration" value="{{this.duration}}">
+                            </td>
+                            <td><span class="order">{{this.number}}</span>
+                                <input class="input input-number" type="text" name="number" value="{{this.number}}">
+                            </td>
+                            <td><span class="order">{{this.location}}</span>
+                                <input class="input" type="text" name="location" value="{{this.location}}">
+                            </td>
+                            <td><span>{{this.totalPrice}}</span>
+                                <input type="text" name="totalPrice" value="{{this.totalPrice}}$">
+                            </td>
+                            <td class="d-flex justify-content-md-end" style="border-top: none;">
+                                <a class="btn btn-link restore" data-id="{{this._id}}"
+                                    style="color: #ffdf2f;">Restore</a>
+                                <a class="btn btn-link" data-toggle="modal" data-id="{{this._id}}"
+                                    data-target="#delete-order-modal" style="color: #ffdf2f;">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {{else}}
+                    <tr>
+                        <td colspan="5">Empty trash can </n>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- confirm delete --}}
+<div id="delete-order-modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete order</h5>
+            </div>
+            <div class="modal-body">
+                <p>Do you want delete order?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-delete-order" type="button" class="btn btn-danger ">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- restore form --}}
+<form method="POST" name="restore-modal-form"></form>
+{{!-- delete form --}}
+<form method="POST" name="delete-modal-form"></form>
+
+<script>
+    var restore = $('.restore')
+    var restoreForm = document.forms['restore-modal-form']
+    var DeleteOrder = document.getElementById("btn-delete-order")
+    // restore button click
+    restore.click(function (event) {
+        event.preventDefault()
+        var orderId = $(this).data('id')
+        console.log(orderId)
+        restoreForm.action = '/me/' + orderId + '/restore?_method=PATCH'
+        restoreForm.submit()
+    })
+    // delete button click
+    var orderId
+    var deleteForm = document.forms['delete-modal-form']
+    $('#delete-order-modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        orderId = button.data('id')
+    })
+    var DeleteOrder = document.getElementById("btn-delete-order")
+    DeleteOrder.onclick = function () {
+        deleteForm.action = '/me/' + orderId + '/destroy?_method=DELETE'
+        deleteForm.submit()
+    }
+
+
+</script>

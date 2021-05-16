@@ -1,0 +1,76 @@
+<div class="oders-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 details">
+                <h1>Order detail</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name's game</th>
+                            <th scope="col">Order date</th>
+                            <th scope="col">Durtion</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Price</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <form action="http://localhost:3000/order/edit" method="POST">
+                            <tr>
+                                <th scope="row">{{sum @index 1}}</th>
+                                <td><span>{{order.name}}</span>
+                                    <input type="text" name="name" readonly value="{{order.name}}">
+                                </td>
+                                <td><span class="order">{{order.order_date}}</span>
+                                    <input class="input" type="text" name="order_date" value="{{order.order_date}}">
+
+                                </td>
+                                <td><span class="order">{{order.duration}}</span>
+                                    <input class="input" type="text" name="duration" value="{{order.duration}}">
+                                </td>
+                                <td><span class="order">{{order.number}}</span>
+                                    <input class="input input-number" type="text" name="number" value="{{order.number}}"
+                                        onchange="handleChange({{json order}})">
+                                </td>
+                                <td><span class="order">{{order.location}}</span>
+                                    <input class="input" type="text" name="location" value="{{order.location}}">
+                                </td>
+                                <td><span>{{order.price}}</span>
+                                    <input type="text" name="totalPrice" readonly
+                                        value="{{total order.number order.price}}$">
+                                </td>
+                                <td class="d-flex justify-content-md-end" style="border-top: none;">
+                                    <button class="repair btn" id="repair">Repair</button>
+                                    <span class="btn" style="z-index: -999;">repair</span>
+                                </td>
+                            </tr>
+                        </form>
+                        <tr>
+                            <th scope="row">#</th>
+                            <td>Total</td>
+                            <td></td>
+                            <td></td>
+                            <td>{{div order.number}}</td>
+                            <td></td>
+                            <td>{{total order.number order.price}}$</td>
+                            <td></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <form action="/order/order-stored" method="POST">
+                    <input type="text" name="name" readonly value="{{order.name}}" class="d-none">
+                    <input type="text" name="order_date" value="{{order.order_date}}" class="d-none">
+                    <input type="text" name="duration" value="{{order.duration}}" class="d-none">
+                    <input class="input input-number d-none" type="text" name="number" value="{{order.number}}">
+                    <input class="input d-none" type="text" name="location" value="{{order.location}}" class="d-none">
+                    <input type="text" name="totalPrice" readonly value="{{total order.number order.price}}$"
+                        class="d-none">
+                    <button class="button btn btn-transparent" id="order-game">Purchase</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

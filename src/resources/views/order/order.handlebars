@@ -1,0 +1,91 @@
+<div class="banner animate__animated animate__fadeIn wow">
+    <div class="container">
+        <div class="banner__background"><img src="/img/BannerHome-Page-8a.jpg"></div>
+        <div class="banner__content text-center my-auto">
+            <div class="banner__content-title">Game orders</div>
+            <div class="banner__content-subtitle">Home<i class="fal fa-angle-right"></i><span>Game Order</span></div>
+        </div>
+    </div>
+</div>
+    <!-- End Banner-->
+    <!-- Start Order -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="order_wrapper mt-4">
+                    <div class="order_container">
+                        <div class="order_item">
+                            <div class="order_content">
+                                <p class="item_title font-weight-bold">{{game.name}}</p>
+                            </div>
+                            <div class="order_img mt-4">
+                                <img src="{{game.image}}">
+                            </div>
+                            <div class="order_content mt-4">
+                                <p class="item_title font-weight-bold">Price: {{game.price}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="col-lg-6">
+                    <form class="py-5 mt-4" method="POST" action="/order/order-details">
+                        <div class="row form-check">
+                            <div class="col-md-12 d-none">
+                                <div class="form-group">
+                                    <label for="FormControlSelect">Name game</label>
+                                    <input type="text" class="form-control" name="name" id="" readonly="true" value='{{game.name}}'>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="FormControlSelect">Start date</label>
+                                    <input type="date" class="form-control" name="order_date" id="">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="FormControlSelect">Duration</label>
+                                    <select class="form-control form-control-lg" name="duration" id="">
+                                        <option>1 Day</option>
+                                        <option>2 Days</option>
+                                        <option>3 Days</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="FormControlSelect">Number of people </label>
+                                    <input type="number" class="form-control" name="number" id="" required> 
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Location</label>
+                                    <select class="form-control form-control-lg" name="location">
+                                        <option></option>
+                                        <option>189 Phùng Hưng</option>
+                                        <option>200 Tôn Thất Thuyết</option>
+                                        <option>195 Cầu Giấy</option>
+                                    </select>
+                                    choose a diffent address
+                                    <input type="checkbox" name="" id="check_address" >
+                                    <textarea class="form-control" id="text" name="location" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 d-none">
+                                <div class="form-group">
+                                    <label for="FormControlSelect">Price </label>
+                                    <input type="text" class="form-control" name="price" readonly = 'true' id="" value="{{game.price}}">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-transparent">Order</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- End Order -->

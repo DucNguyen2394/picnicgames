@@ -1,0 +1,71 @@
+<div class="background-img-login">
+    <div class="login-wrapper container">
+        <div class="container">
+            <h1>Log in</h1>
+            <form action="/user/check-log-in" name="myForm" method="POST" class="form" id="form">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" id="username" name="username" class="form-control input1"
+                                placeholder="Username">
+                            <span class="error"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="password" id="password" name="password" class="form-control input2"
+                                placeholder="Password">
+                            <span class="error"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <div class="form-check mb-4 mb-md-6">
+                            <input type="checkbox" class="form-check-input checkbox1" name="" id="loginCheck" checked>
+                            <label class="form-check-label" for="loginCheck">Remember me</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-center forgot">
+                        <a href="#">Forgot password?</a>
+                    </div>
+                </div>
+                <button type="submit" id="submit" class="btn btn-primary btn-block mb-3">Login</button>
+                <span class="error"></span>
+                <div class="register">
+                    <a href="/user/register">Don't have an account. Register now</a>
+                </div>
+            </form>
+            <div class="copyright">
+                <p>© 2021 Form Picnicgames <a href="/" target="_blank"> FPT Aptech </a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let username = document.querySelector("#username");
+    let password = document.querySelector("#password");
+
+    document.getElementById("form").addEventListener("submit", async function (event) {
+        
+        if (username.value === "") {
+            username.nextElementSibling.innerHTML = "please enter your username";
+            console.log(username);
+        }
+        else if (username.value.length < 6) {
+            username.nextElementSibling.innerHTML = "vui long nhap nhieu hon 6 ky tu";
+        }
+        else {
+            username.nextElementSibling.innerHTML = "";
+        }
+        if (password.value === "") {
+            password.nextElementSibling.innerHTML = "please enter your password";
+        }
+        else if (password.value.length < 6) {
+            password.nextElementSibling.innerHTML = "vui long nhap nhieu hon 6 ky tu";
+        }
+        else {
+            password.nextElementSibling.innerHTML = "";
+        }
+    })
+
+
+</script>

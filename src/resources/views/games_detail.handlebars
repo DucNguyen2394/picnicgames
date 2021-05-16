@@ -1,0 +1,61 @@
+<div class="banner animate__animated animate__fadeIn wow">
+  <div class="container">
+    <div class="banner__background"><img src="/img/banner-orderss.jpg"></div>
+    <div class="banner__content text-center my-auto">
+      <div class="banner__content-title">Game details</div>
+      <div class="banner__content-subtitle">Home<i class="fal fa-angle-right"></i><span>Game details</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="gamesDetails">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 col-xl-9">
+        <div class="gamesDetails__content animate__animated animate__zoomIn wow" data-wow-delay="0.5s">
+          <div class="gamesDetails__content-title">{{games.name}}</div>
+          <div class="gamesDetails__content-image"><img src="{{games.image}}"></div>
+          <div class="gamesDetails__content-text">
+            <p>
+              {{games.content}}
+            </p>
+          </div>
+          <div class="row detail_order">
+            <div class="col-12 col-md-6">
+              <div class="gamesDetails__content-tags"><span class="tags__title">Type: </span><a class="tags__item"
+                  href="#">{{games.type}}</a></div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="gamesDetails__content-categories"><span class="categories__title">categories : <a
+                    href="#">{{games.category}}</a></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="order_game text-center py-3 animate__animated animate__zoomIn wow" data-wow-delay="1s">
+          <a href="/order/{{games._id}}" class="btn btn-dark">Order game</a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-xl-3">
+        <div class="games__sidebar animate__animated animate__fadeInRight wow" data-wow-delay="1s">
+          <div class="games__sidebar-search">
+            <div class="search__title">Search</div>
+            <form action="">
+              <input type="text" name="q" value placeholder="Search...">
+              <button type="submit"><i class="fal fa-search"></i></button>
+            </form>
+          </div>
+          <div class="games__sidebar-cate">
+            <div class="cate__title">Categories</div>
+            <div class="cate__content">
+              <ul class="cate__content-list">
+                <li class="list__item"><a class="list__item-link text-capitalize" href="#">Kids</a></li>
+                <li class="list__item"><a class="list__item-link text-capitalize" href="#">Males</a></li>
+                <li class="list__item"><a class="list__item-link text-capitalize" href="#">Females</a></li>
+                <li class="list__item"><a class="list__item-link text-capitalize" href="#">Families</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

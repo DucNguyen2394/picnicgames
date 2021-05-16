@@ -1,0 +1,48 @@
+<div class="overlay-header"><span class="close-overlay"><i class="fal fa-times"></i></span></div>
+<div class="header">
+  <div class="container">
+    <div class="header__menu">
+      <div class="header__menu-logo"><a class="header__menu-logo-link" href="/"><img src="/img/Logo.png"></a></div>
+      <div class="accordion-menu">
+        <div class="header__menu-button">
+          <i class="fas fa-bars"></i>
+        </div>
+        <ul class="header__menu-list">
+          <li class="list__item"><a class="list__item-link" href="/">Home</a></li>
+          <li class="list__item"><a class="list__item-link" href="/indoors">Indoors</a></li>
+          <li class="list__item"><a class="list__item-link" href="/outdoors">Outdoors</a></li>
+          <li class="list__item"><a class="list__item-link" href="/contact">Contact</a></li>
+          <li class="list__item"><a class="list__item-link" href="/user/log-in">Login</a></li>
+          <li class="list__item"><a class="list__item-link" href="/"><i class="fas fa-shopping-cart"
+                style="color: #000;"></i></a>
+            <div class="dropdown__menu">
+              <div class="cart_container row">
+                <div class="cart_item">
+                  <div class="cart_img col-md-6">
+                    <img src="">
+                  </div>
+                  <div class="cart_content col-md-8">
+                    <p class="item_title font-weight-bold">{{game.name}}</p>
+                    <p class="item_price float-right">1 x {{game.price}}</p>
+                  </div>
+                </div>
+                <div class="cart_total">Total: <span style="float: right;">{{game.price}}</span></div>
+                <a href="/order/order-details" class="btn btn-dark">Check out</a>
+              </div>
+            </div>
+          </li>
+          <li class="list__item drop_admin">
+            <a class="list__item-link" class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user drop"></i></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="/me/stored/games">Manage Games</a>
+              <a class="dropdown-item" href="/game/create">Create Games</a>
+              <a class="dropdown-item" href="/me/order-stored">Manage Orders</a>
+              <a class="dropdown-item" href="/me/user-stored">Manage Users</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

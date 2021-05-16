@@ -1,0 +1,30 @@
+<div class="background-img">
+  <div class="mt-4">
+    <div class="create">
+      <h1>Update game</h1>
+      <form method="POST" action="/game/{{games._id}}?_method=PUT">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Name game" value="{{games.name}}" >
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea type="text" class="form-control" id="description" name="description" placeholder="Description">{{games.description}}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <input type="text" class="form-control" id="content" name="content" placeholder="Content" value="{{games.content}}" >
+        </div>
+        <div class="form-group">
+          <label for="image">Image</label>
+          <input type="text" class="form-control" id="image" name="image" placeholder="Image" value="{{games.image}}">
+        </div>
+        <div class="form-group">
+          <label for="image">Price</label>
+          <input type="text" class="form-control" id="price" name="price" placeholder="Price" value="{{games.price}}">
+        </div>
+        <button type="submit" class="btn btn-transparent">Save game</button>
+      </form>
+    </div>
+  </div>
+</div>

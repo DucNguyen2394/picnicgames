@@ -1,0 +1,122 @@
+<style>
+    .details {
+        position: relative;
+    }
+
+    .trash {
+        font-size: 24px;
+        padding-top: 15px;
+        color: #FFFFFF;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    .trash:hover {
+        color: #ffdf2f;
+        text-decoration: none;
+        transition: all 0.4s ease
+    }
+</style>
+<div class="oders-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 details">
+                <h1>User deleted</h1>
+                <a href="/me/user-stored" class="trash"><i class="fas fa-arrow-left"></i> List user</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Address</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each users}}
+                        <tr>
+                            <th scope="row">{{sum @index 1}}</th>
+                            <td><span>{{this.username}}</span>
+                                <input type="text" name="username" readonly value="{{this.username}}">
+                            </td>
+                            <td><span class="order">{{this.email}}</span>
+                                <input class="input" type="text" name="email" value="{{this.email}}">
+                            </td>
+                            <td><span class="order">{{this.phone}}</span>
+                                <input class="input" type="text" name="phone" value="{{this.phone}}">
+                            </td>
+                            <td><span class="order">{{this.address}}</span>
+                                <input class="input " type="text" name="address" value="{{this.address}}">
+                            </td>
+                            <td class="d-flex justify-content-md-end" style="border-top: none;">
+                                <a class="btn btn-link restore" data-id="{{this._id}}"
+                                    style="color: #ffdf2f;">Restore</a>
+                                <a class="btn btn-link" data-toggle="modal" data-id="{{this._id}}"
+                                    data-target="#delete-user-modal" style="color: #ffdf2f;">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {{else}}
+                    <tr>
+                        <td colspan="5">Empty trash can </n>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- confirm delete --}}
+<div id="delete-user-modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete user</h5>
+            </div>
+            <div class="modal-body">
+                <p>Do you want delete user?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-delete-user" type="button" class="btn btn-danger ">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- restore form --}}
+<form method="POST" name="restore-modal-form"></form>
+{{!-- delete form --}}
+<form method="POST" name="delete-modal-form"></form>
+
+<script>
+    var restore = $('.restore')
+    var restoreForm = document.forms['restore-modal-form']
+    var DeleteUser = document.getElementById("btn-delete-user")
+    // restore button click
+    restore.click(function (event) {
+        event.preventDefault()
+        var userId = $(this).data('id')
+        restoreForm.action = '/user/' + userId + '/restore?_method=PATCH'
+        restoreForm.submit()
+    })
+    // delete button click
+    var userId
+    var deleteForm = document.forms['delete-modal-form']
+    $('#delete-user-modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        userId = button.data('id')
+    })
+    var DeleteUser = document.getElementById("btn-delete-user")
+    DeleteUser.onclick = function () {
+
+        console.log(userId)
+        deleteForm.action = '/user/' + userId + '/destroy?_method=DELETE'
+        deleteForm.submit()
+    }
+
+
+</script>

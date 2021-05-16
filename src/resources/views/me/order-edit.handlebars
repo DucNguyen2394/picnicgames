@@ -1,0 +1,26 @@
+<div class="background-img">
+  <div class="mt-4">
+    <div class="create">
+      <h1>Update order</h1>
+      <form method="POST" action="/me/{{orders._id}}?_method=PUT">
+        <div class="form-group">
+          <label for="order_date">Order date</label>
+          <input type="text" class="form-control" id="order_date" name="order_date" placeholder="Order date" value="{{orders.order_date}}">
+        </div>
+        <div class="form-group">
+          <label for="duration">Duration</label>
+          <input type="text" class="form-control" id="duration" name="duration" placeholder="duration" value="{{orders.duration}}" >
+        </div>
+        <div class="form-group">
+          <label for="number">Number</label>
+          <input type="text" class="form-control" id="number" name="number" placeholder="number" value="{{orders.number}}">
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" class="form-control" id="location" name="location" placeholder="location" value="{{orders.location}}">
+        </div>
+        <button type="submit" class="btn btn-transparent">Save order</button>
+      </form>
+    </div>
+  </div>
+</div>
